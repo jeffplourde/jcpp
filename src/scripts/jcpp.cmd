@@ -6,4 +6,4 @@ SET CPP_CLASSPATH=%CPP_LIB%\anarres-cpp.jar;%CPP_LIB%\gnu.getopt.jar
 SET CPP_MAINCLASS=org.anarres.cpp.Main
 SET CPP_JFLAGS=-Xmx128M
 
-java %CPP_JFLAGS% -cp "%CPP_CLASSPATH%" %CPP_MAINCLASS% %* | %CPP_ROOT%\sed.exe -e s/^#.*//
+java %CPP_JFLAGS% -cp "%CPP_CLASSPATH%" %CPP_MAINCLASS% %* 
