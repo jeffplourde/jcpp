@@ -30,12 +30,15 @@ public class Version {
 
 	private static final String	VERSION = "${version}";
 
-	private static final int	major;
-	private static final int	minor;
-	private static final int	patch;
+	private static final int	 major;
+	private static final int	 minor;
+	private static final int	 patch;
+	private static final boolean snapshot;
 
 	static {
-		String[]	tmp = VERSION.split("\\.");
+	    String[]    tmp = VERSION.split("\\-");
+	    snapshot = tmp.length > 1 && "SNAPSHOT".equals(tmp[1]);
+		tmp = tmp[0].split("\\.");
 		major = Integer.parseInt(tmp[0]);
 		minor = Integer.parseInt(tmp[1]);
 		patch = Integer.parseInt(tmp[2]);
@@ -56,6 +59,10 @@ public class Version {
 	public static int getPatch() {
 		return patch;
 	}
+	
+	public static boolean isSnapshot() {
+	    return snapshot;
+	}
 
 	public static void main(String[] args) {
 		System.out.println("Version " + VERSION);
@@ -63,6 +70,7 @@ public class Version {
 		System.out.println("getMajor() returns " + getMajor());
 		System.out.println("getMinor() returns " + getMinor());
 		System.out.println("getPatch() returns " + getPatch());
+		System.out.println("isSnapshot() returns " + isSnapshot());
 	}
 
 }
